@@ -12,7 +12,7 @@ In summary:
 
 <img src="https://raw.githubusercontent.com/woltapp/blurhash/master/Media/HowItWorks1.jpg" width="250">&nbsp;&nbsp;&nbsp;<img src="https://raw.githubusercontent.com/woltapp/blurhash/master/Media/HowItWorks2.jpg" width="250">
 
-Ream more about the algorithm [here](https://github.com/woltapp/blurhash/blob/master/Algorithm.md).
+Read more about the algorithm [here](https://github.com/woltapp/blurhash/blob/master/Algorithm.md).
 
 ## Why blurhash-numba?
 
@@ -50,8 +50,4 @@ be `>= 1` and `<= 9`.
 Run test suite with `pytest` in virtual environment
 ```
 $ pytest
-```
-Use `tox` to run test suite against all supported python versions
-```
-$ tox
 ```
