@@ -1,0 +1,24 @@
+# YAML Validator:   http://lint.travis-ci.org/
+#
+os:
+  - linux
+  - osx
+
+language: python
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8"
+  
+# command to install dependencies
+install:
+  - pip install -e .
+  - pip install pytest
+  - pip install Pillow
+  
+# command to run tests
+script:
+  - pytest
+
+notifications:
+  email: false
