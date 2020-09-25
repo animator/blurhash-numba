@@ -1,4 +1,5 @@
 # blurhash-numba
+[![Build Status](https://travis-ci.com/animator/blurhash-numba.svg?branch=master)](https://travis-ci.com/animator/blurhash-numba)
 
 ## What is BlurHash?
 
