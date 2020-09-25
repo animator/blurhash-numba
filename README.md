@@ -40,22 +40,17 @@ import numpy as np
 image = Image.open("256.jpg")
 ```
 
-```python
-image
-```
-<img src="https://raw.githubusercontent.com/animator/blurhash-numba/master/media/256.jpg" width="256">
+
+> `image`    
+> <img src="https://raw.githubusercontent.com/animator/blurhash-numba/master/media/256.jpg" width="256">
 
 ```python
 image_array = np.array(image.convert("RGB"), dtype=np.float)
 blurhash_code = encode(image_array, x_components = 4, y_components = 3)
 ```
 
-```python
-blurhash_code
-```
-```
-'LtL#LZR*x]jG.TRkoeayIUofM{R*'
-```
+> `blurhash_code`    
+> `'LtL#LZR*x]jG.TRkoeayIUofM{R*'`
 
 `y_components` and `x_components` parameters adjust the amount of
 vertical and horizontal AC components in hashed image. Both parameters must
@@ -68,10 +63,11 @@ from blurhash_numba import decode
 from PIL import Image
 import numpy as np
 
-Image.fromarray(np.array(decode(blur_hash, 256, 256)).astype('uint8'))
+blur_img = Image.fromarray(np.array(decode(blur_hash, 256, 256)).astype('uint8'))
 ```
 
-<img src="https://raw.githubusercontent.com/animator/blurhash-numba/master/media/256-blur.jpg" width="256">
+> `blur_img`    
+> <img src="https://raw.githubusercontent.com/animator/blurhash-numba/master/media/256-blur.jpg" width="256">
 
 # Tests
 
