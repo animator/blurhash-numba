@@ -4,6 +4,10 @@
 
 # blurhash-numba : The fastest Python 3 BlurHash implementation *powered by* numba
 [![Build Status](https://travis-ci.com/animator/blurhash-numba.svg?branch=master)](https://travis-ci.com/animator/blurhash-numba)
+[![PyPI - Python Version](https://img.shields.io/pypi/pyversions/blurhash-numba)](https://pypi.org/project/blurhash-numba)
+[![PyPI version](https://badge.fury.io/py/blurhash-numba.svg)](https://pypi.org/project/blurhash-numba)
+![Maintenance](https://img.shields.io/maintenance/yes/2020)
+[![GitHub](https://img.shields.io/github/license/animator/blurhash-numba)](https://github.com/animator/blurhash-numba/blob/master/LICENSE)
 
 ## What is BlurHash?
 
