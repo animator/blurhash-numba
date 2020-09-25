@@ -14,12 +14,12 @@ def base83_decode(base83_str):
 
 @nb.njit(types.string(nb.uint64, nb.uint8))
 def base83_encode(value, length):
-    if int(value) // (83 ** (length)) != 0:
+    if value // (83 ** (length)) != 0:
         raise ValueError("Specified length is too short to encode given value.")
         
     result = ""
     for i in range(1, length + 1):
-        digit = int(value) // (83 ** (length - i)) % 83
+        digit = value // (83 ** (length - i)) % 83
         result += alphabet[int(digit)]
     return result
 
