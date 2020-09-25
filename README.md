@@ -72,7 +72,8 @@ from blurhash_numba import decode
 from PIL import Image
 import numpy as np
 
-blur_img = Image.fromarray(np.array(decode(blur_hash, 256, 256)).astype('uint8'))
+blurhash_code = 'LtL#LZR*x]jG.TRkoeayIUofM{R*'
+blur_img = Image.fromarray(np.array(decode(blurhash_code, 256, 256)).astype('uint8'))
 ```
 
 > `blur_img`    
