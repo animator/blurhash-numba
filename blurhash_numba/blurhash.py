@@ -107,8 +107,8 @@ def blurhash_decode(blurhash, width, height, punch, linear):
     return pixels
 
 @nb.njit(types.string(nb.float64[:, :, :], nb.uint16, nb.uint16, nb.boolean))
-def blurhash_encode(image, components_x, components_y, linear):
-    if components_x < 1 or components_x > 9 or components_y < 1 or components_y > 9: 
+def blurhash_encode(image, x_components, y_components, linear):
+    if x_components < 1 or x_components > 9 or y_components < 1 or y_components > 9: 
         raise ValueError("x and y component counts must be between 1 and 9 inclusive.")
     height = len(image)
     width = len(image[0])
@@ -128,8 +128,8 @@ def blurhash_encode(image, components_x, components_y, linear):
     # Calculate components
     components = []
     max_ac_component = 0.0
-    for j in range(components_y):
-        for i in range(components_x):
+    for j in range(y_components):
+        for i in range(x_components):
             norm_factor = 1.0 if (i == 0 and j == 0) else 2.0
             component = [0.0, 0.0, 0.0]
             for y in range(height):
@@ -166,7 +166,7 @@ def blurhash_encode(image, components_x, components_y, linear):
         
     # Build final blurhash
     blurhash = ""
-    blurhash += base83_encode((components_x - 1) + (components_y - 1) * 9, 1)
+    blurhash += base83_encode((x_components - 1) + (y_components - 1) * 9, 1)
     blurhash += base83_encode(quant_max_ac_component, 1)
     blurhash += base83_encode(dc_value, 4)
     for ac_value in ac_values:
@@ -177,5 +177,5 @@ def blurhash_encode(image, components_x, components_y, linear):
 def decode(blurhash, width, height, punch = 1.0, linear = False):
     return blurhash_decode(blurhash, width, height, punch, linear)
 
-def encode(image, components_x = 4, components_y = 4, linear = False):
-    return blurhash_encode(image, components_x, components_y, linear)
+def encode(image, x_components = 4, y_components = 4, linear = False):
+    return blurhash_encode(image, x_components, y_components, linear)
