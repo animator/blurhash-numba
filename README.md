@@ -1,4 +1,8 @@
-# blurhash-numba
+<p align="center">
+  <img src="https://raw.githubusercontent.com/animator/blurhash-numba/master/media/logo-text.png" alt="Blurhash numba logo">
+</p>
+
+# blurhash-numba : The fastest Python 3 BlurHash implementation *powered by* numba
 [![Build Status](https://travis-ci.com/animator/blurhash-numba.svg?branch=master)](https://travis-ci.com/animator/blurhash-numba)
 
 ## What is BlurHash?
