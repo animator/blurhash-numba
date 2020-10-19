@@ -9,6 +9,9 @@
 ![Maintenance](https://img.shields.io/maintenance/yes/2020)
 [![GitHub](https://img.shields.io/github/license/animator/blurhash-numba)](https://github.com/animator/blurhash-numba/blob/master/LICENSE)
 
+## Check out the Interactive Demo - [Link](https://share.streamlit.io/realworldpython/blurhash-numba-app/main/app.py)
+![Blurhash numba demo](https://raw.githubusercontent.com/animator/blurhash-numba/master/media/blurhash-numba-demo.gif)
+
 ## What is BlurHash?
 
 BlurHash is a compact representation of a placeholder for an image.  
