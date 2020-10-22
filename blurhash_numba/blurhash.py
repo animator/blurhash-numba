@@ -1,18 +1,17 @@
 import math
 import numpy as np
 import numba as nb
-from numba import types
 
 alphabet = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz#$%*+,-.:;=?@[]^_{|}~"
 
-@nb.njit(nb.uint64(types.string))
+@nb.njit('uint64(string)')
 def base83_decode(base83_str):
     value = 0
     for base83_char in base83_str:
         value = value * 83 + alphabet.index(base83_char)
     return value
 
-@nb.njit(types.string(nb.uint64, nb.uint8))
+@nb.njit('string(uint64, uint8)')
 def base83_encode(value, length):
     if value // (83 ** (length)) != 0:
         raise ValueError("Specified length is too short to encode given value.")
@@ -23,25 +22,25 @@ def base83_encode(value, length):
         result += alphabet[int(digit)]
     return result
 
-@nb.njit(nb.float64(nb.float64))
+@nb.njit('float64(float64)')
 def srgb_to_linear(value):
     value = float(value) / 255.0
     if value <= 0.04045:
         return value / 12.92
     return math.pow((value + 0.055) / 1.055, 2.4)
 
-@nb.njit(nb.float64(nb.float64,nb.float32))
+@nb.njit('float64(float64,float32)')
 def sign_pow(value, exp):
     return math.copysign(math.pow(abs(value), exp), value)
 
-@nb.njit(nb.float64(nb.float64))
+@nb.njit('float64(float64)')
 def linear_to_srgb(value):
     value = max(0.0, min(1.0, value))
     if value <= 0.0031308:
         return value * 12.92 * 255 + 0.5
     return (1.055 * math.pow(value, 1 / 2.4) - 0.055) * 255 + 0.5
 
-@nb.njit(types.UniTuple(nb.uint16,2)(types.string))
+@nb.njit('UniTuple(uint16,2)(string)')
 def blurhash_components(blurhash):
     if len(blurhash) < 6:
         raise ValueError("BlurHash must be at least 6 characters long.")
@@ -53,7 +52,7 @@ def blurhash_components(blurhash):
     
     return size_x, size_y
 
-@nb.njit(nb.float64[:, :, :](types.string, nb.uint16, nb.uint16, nb.float64, nb.boolean))
+@nb.njit('float64[:, :, :](string, uint16, uint16, float64, boolean)')
 def blurhash_decode(blurhash, width, height, punch, linear):
     if len(blurhash) < 6:
         raise ValueError("BlurHash must be at least 6 characters long.")
@@ -106,7 +105,7 @@ def blurhash_decode(blurhash, width, height, punch, linear):
                 pixels[y][x][2] = linear_to_srgb(pixels[y][x][2])
     return pixels
 
-@nb.njit(types.string(nb.float64[:, :, :], nb.uint16, nb.uint16, nb.boolean))
+@nb.njit('string(float64[:, :, :], uint16, uint16, boolean)')
 def blurhash_encode(image, x_components, y_components, linear):
     if x_components < 1 or x_components > 9 or y_components < 1 or y_components > 9: 
         raise ValueError("x and y component counts must be between 1 and 9 inclusive.")
